@@ -1,0 +1,138 @@
+/* 
+    Document   : mult_table_style.css 
+    Created on : 2014/11/20
+    Author     : Dalton James
+    Email      : Dalton_James@student.uml.edu
+    
+    Description: Adds css to the dynamic table and other html on the page
+*/
+
+    /*css reset for html5 from Jesse Heines class notes*/
+    html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+    pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd,
+    q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt,
+    dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot,
+    thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption,
+    footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark,
+    audio, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      vertical-align: baseline;
+  }
+
+  article, aside, details, figcaption, figure, footer, header, hgroup, menu,
+  nav, section {
+      display: block;
+  }
+  body {
+      line-height: 1.2;
+  }
+  ol {
+      padding-left: 1.4em;
+      list-style: decimal;
+  }
+  ul {
+      padding-left: 1.4em;
+      list-style: square;
+  }
+  table {
+      border-collapse: collapse;
+      border-spacing: 0;
+  }
+/*end css reset*/
+
+/*effects the entire body*/
+body{
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+/*effects the headers*/
+h1{
+    font-size: 24px;
+}
+
+/*wraps each textbox and its description in a div to keep them together*/
+.form_ele{
+    display: block;
+    margin-bottom: 3px;
+}
+
+/*formats each box for user input*/
+.num_box{
+    width: 55px;
+    float: right;
+}
+
+/*fixes the labels in the form*/
+label{
+    float: left;
+    margin-right: 14px;
+}
+
+/*format the instructions for the table*/
+#instructions{
+  font-style: italic;
+}
+
+/*formats the error message if there is one*/
+#error_msg{
+    margin-top: 10px;
+    display: block;
+}
+
+/*effects spacing and look of entire form*/
+#form_wrapper{
+    padding: 5px;
+    border: solid black 3px;
+    display: inline-block;
+}
+
+/*floats the form left for spacing*/
+.float_l{
+    float: left;
+}
+
+
+/*effects spacing of the table*/
+table{
+    display: inline-block; 
+    margin-left: 20px;
+}
+
+/*changes the dynamic table and its contents*/
+table, td, th {
+    border-spacing: 5px;
+    border: 1px solid black;
+}
+
+/*changes the spacing of data in the table*/
+td, th {
+    padding: 5px;
+    text-align: center;
+}
+
+/*changes the first row and column of the table*/
+th {
+    color: white;
+    background-color: black;
+    border-color: white;
+}
+
+/*hides the table because of the "dot" without it*/
+.hide{
+  visibility: hidden;
+}
+
+
+/*changes the top left (first) box of the table*/
+#result tr:first-child th:first-child{
+    background-color: white; 
+}
+
+/*changes to error messages*/
+#error_msg{
+    color: red;
+}

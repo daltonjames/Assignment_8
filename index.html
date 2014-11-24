@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset='UTF-8'>
+        <!-- 
+        Dalton James, Dalton_James@student.uml.edu   
+        UMass Lowell Computer Science
+        Student in Jesse Heines GUI Programming I
+        
+        File: index.html
+        Created: 2014/11/20
+        
+        Description: page to display the dynamic multiplication table and holds the form for it
+        
+        -->
+
+        <title>Mult Table</title>
+
+
+        <link href="css/mult_table_style.css" rel="stylesheet" type="text/css">
+
+        <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+        <script src="js/jquery-validation-1.13.1/dist/jquery.validate.js"></script>
+        <script src="js/jquery-validation-1.13.1/dist/additional-methods.js"></script>
+        <script src="mult_table.js"></script>
+
+    </head>
+    <body>
+
+
+        <h1>Multiplication Table</h1>
+
+        <div id="form_wrapper">
+
+            <!--form to take in the size of the multiplication table -->
+            <form id="m_form" action="javascript:void(0)">
+
+
+                <p id="instructions">Input table values</p>
+
+                <!--each of the divs encloses a label and number box pair-->
+                <div class="form_ele">
+                    <!--the minimum horizontal value for the table-->
+                    <label>Min Horizontal Value</label>
+                    <input id="min_h" name="min_h" class="num_box" type="text" tabindex="1" value="1"/>
+                </div>
+
+                <div class="form_ele">
+                    <!--the maximum horizontal value for the table-->
+                    <label>Max Horizontal Value</label>
+                    <input id="max_h" name="max_h" class="num_box" type="text" tabindex="2" value="10"/> 
+                </div>
+
+                <div class="form_ele">
+                    <!--the minimum vertical value for the table-->
+                    <label>Min Vertical Value</label>
+                    <input id="min_v" name="min_v" class="num_box" type="text" tabindex="3" value="1"/> 
+                </div>
+
+                <div class="form_ele">
+                    <!--the maximum vertical value for the table-->
+                    <label>Max Vertical Value</label>
+                    <input id="max_v" name="max_v" class="num_box" type="text" tabindex="4" value="10"/>      
+                </div>
+
+                <!--the submit box to create the table-->
+                <input class="submit_box" type="submit" tabindex="5" value="Generate Table"/>
+
+            </form>
+
+        </div><!--end for form_wrapper div-->
+
+        
+
+        <!--the dynamic table to be created-->
+        <table id="result" class="hide"></table>
+    
+        <!--tag for the error message-->    
+        <span id="error_msg"></span>
+
+    
+    </body>
+</html>
