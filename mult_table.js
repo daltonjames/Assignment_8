@@ -26,8 +26,8 @@ $(document).ready(function () {
 
     $("#m_form").submit(function() {
                              
-        $("#tabs").append(
-            "<li><a href='#tab-" + num_tabs + "'>#" + num_tabs + "</a></li>"
+        $("#tabs > ul").append(
+            "<li><a href='#tabs-" + num_tabs + "'>#" + num_tabs + "</a></li>"
         );
         $("#tabs").tabs("refresh");
     
