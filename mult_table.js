@@ -12,25 +12,28 @@
 //a var that will be used to ensure the correct inputs are targeted
 var strVarToTest = "";
 
+//used to decide if the table should be generated
 var bool_error = false;
+
+//var to hold the current number of tabs
+var num_tabs = 0;
 
 //wait for html to be ready
 $(document).ready(function () {
 
     //Jesse Heines add tab code
-    $("div#tabs").tabs();
+    $("#tabs").tabs();
 
     $("#m_form").submit(function() {
-            
-        var num_tabs = $("div#tabs ul li").length + 1;
-            $("div#tabs ul").append(
-                "<li><a href='#tab-" + num_tabs + "'>#" + num_tabs + "</a></li>"
-            );
-            $("div#tabs").tabs("refresh");
-        
-            $("#tabs_content").append(
-                "<div id='tabs-" + num_tabs + "'>" + makeTable() + "</div>"
-            );
+                             
+        $("#tabs").append(
+            "<li><a href='#tab-" + num_tabs + "'>#" + num_tabs + "</a></li>"
+        );
+        $("#tabs").tabs("refresh");
+    
+        $("#tabs").append(
+            "<div id='tabs-" + num_tabs + "'>" + makeTable() + "</div>"
+        );
 
 
     });
@@ -189,6 +192,8 @@ function makeTable(){
     }
 
     appendStr = appendStr.concat("</table>");
+
+    num_tabs++;
 
     //append the table fully contained in a string to the DOM 
     return appendStr; 
