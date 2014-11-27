@@ -12,27 +12,28 @@
 //a var that will be used to ensure the correct inputs are targeted
 var strVarToTest = "";
 
-var bool_error = false;
-
 //wait for html to be ready
 $(document).ready(function () {
 
-    //Jesse Heines add tab code
     $("div#tabs").tabs();
 
-    $("#m_form").submit(function() {
-            
+    $("button#add-tab").click(function() {
+
         var num_tabs = $("div#tabs ul li").length + 1;
-            $("div#tabs ul").append(
-                "<li><a href='#tab-" + num_tabs + "'>#" + num_tabs + "</a></li>"
-            );
-            $("div#tabs").tabs("refresh");
-        
-            $("#tabs_content").append(
-                "<div id='tabs-" + num_tabs + "'>" + makeTable() + "</div>"
-            );
+
+        $("div#tabs ul").append(
+            "<li><a href='#tab" + num_tabs + "'>#" + num_tabs + "</a></li>"
+        );
+
+        $("div#tabs").tabs("refresh");
+    });                    
 
 
+
+    $("#m_form").submit(function() {
+
+        console.log("make");
+        makeTable();
     });
 
 
@@ -112,6 +113,19 @@ $(document).ready(function () {
             }
         },
         errorPlacement: function (error, element) {
+
+            console.log("empty");
+            
+            /*
+            $("#error_msg").empty();
+
+            //$("#result").empty();
+            //$("#result").addClass("hide");
+
+            //$("#form_wrapper").removeClass("float_l");
+            */ 
+
+
             $(error).appendTo($("#error_msg"));
         },
         success: function(error, element){
@@ -122,8 +136,15 @@ $(document).ready(function () {
 
 function makeTable(){
 
-    //clears error message if any exist
+
+    $("#form_wrapper").addClass("float_l");
+
     $("#error_msg").empty();
+
+    //removes old table if it exists
+    $("#result").empty();
+
+    $("#result").removeClass("hide");
     
     //checks if all of the values are set
     if($("#max_v").val() === "" || $("#min_v").val() === "" || $("#max_h").val() === "" || $("#min_h").val() === ""){
@@ -146,7 +167,7 @@ function makeTable(){
 
 
     //appendStr used to build the table
-    var appendStr = "<table id='result'>"; 
+    var appendStr = ""; 
 
     //2 for loops iterate and concat table rows and columns to "appendStr"
     //which is appended to the DOM when all "tr's" and "td's" are added
@@ -188,10 +209,8 @@ function makeTable(){
         appendStr = appendStr.concat("</tr>");
     }
 
-    appendStr = appendStr.concat("</table>");
-
     //append the table fully contained in a string to the DOM 
-    return appendStr; 
+    $("#result").append(appendStr); 
 }
 
 
@@ -205,10 +224,16 @@ jQuery.fn.numVal = function() {
 
 
 highlightError = function( strVarToTest ) {
+    console.log("highlight");
 
-    bool_error = true;
+
 
     $("#error_msg").empty();
+
+    $("#result").empty();
+    $("#result").addClass("hide");
+
+    $("#form_wrapper").removeClass("float_l");
 
     $( strVarToTest ).css( { "border" : "2px solid red" } )  ;
     $( strVarToTest ).focus() ;
@@ -216,7 +241,7 @@ highlightError = function( strVarToTest ) {
 
 unhighlightError = function( strVarToTest ) {
 
-    bool_error = false;
+    console.log("UNhighlight");
 
     $("#error_msg").empty();
 

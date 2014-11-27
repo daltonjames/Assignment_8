@@ -12,8 +12,6 @@
 //a var that will be used to ensure the correct inputs are targeted
 var strVarToTest = "";
 
-var bool_error = false;
-
 //wait for html to be ready
 $(document).ready(function () {
 
@@ -21,16 +19,19 @@ $(document).ready(function () {
     $("div#tabs").tabs();
 
     $("#m_form").submit(function() {
-            
-        var num_tabs = $("div#tabs ul li").length + 1;
-            $("div#tabs ul").append(
-                "<li><a href='#tab-" + num_tabs + "'>#" + num_tabs + "</a></li>"
-            );
-            $("div#tabs").tabs("refresh");
         
-            $("#tabs_content").append(
-                "<div id='tabs-" + num_tabs + "'>" + makeTable() + "</div>"
-            );
+    var num_tabs = $("div#tabs ul li").length + 1;
+        $("div#tabs ul").append(
+            "<li><a href='#tab" + num_tabs + "'>#" + num_tabs + "</a></li>"
+        );
+        $("div#tabs").tabs("refresh");
+    
+        $("#tabs_content").append(
+            "<div id='tabs-" + num_tabs + "'>" + makeTable() + "</div>"
+            )
+
+
+//        var str = makeTable();
 
 
     });
@@ -112,6 +113,19 @@ $(document).ready(function () {
             }
         },
         errorPlacement: function (error, element) {
+
+            console.log("empty");
+            
+            /*
+            $("#error_msg").empty();
+
+            //$("#result").empty();
+            //$("#result").addClass("hide");
+
+            //$("#form_wrapper").removeClass("float_l");
+            */ 
+
+
             $(error).appendTo($("#error_msg"));
         },
         success: function(error, element){
@@ -122,8 +136,15 @@ $(document).ready(function () {
 
 function makeTable(){
 
-    //clears error message if any exist
+
+    $("#form_wrapper").addClass("float_l");
+
     $("#error_msg").empty();
+
+    //removes old table if it exists
+    $("#result").empty();
+
+    $("#result").removeClass("hide");
     
     //checks if all of the values are set
     if($("#max_v").val() === "" || $("#min_v").val() === "" || $("#max_h").val() === "" || $("#min_h").val() === ""){
@@ -205,10 +226,16 @@ jQuery.fn.numVal = function() {
 
 
 highlightError = function( strVarToTest ) {
+    console.log("highlight");
 
-    bool_error = true;
+
 
     $("#error_msg").empty();
+
+    $("#result").empty();
+    $("#result").addClass("hide");
+
+    $("#form_wrapper").removeClass("float_l");
 
     $( strVarToTest ).css( { "border" : "2px solid red" } )  ;
     $( strVarToTest ).focus() ;
@@ -216,7 +243,7 @@ highlightError = function( strVarToTest ) {
 
 unhighlightError = function( strVarToTest ) {
 
-    bool_error = false;
+    console.log("UNhighlight");
 
     $("#error_msg").empty();
 
