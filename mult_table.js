@@ -27,19 +27,43 @@ $(document).ready(function () {
     $("#m_form").submit(function() {
                              
         $("#tabs > ul").append(
-            "<li><a href='#tabs-" + num_tabs + "'>#" + num_tabs + "</a></li>"
+            "<li><a href='#tabs-" + num_tabs + "'>#" + num_tabs + "</a><span class='ui-icon ui-icon-close'>Remove Tab</span></li>"
         );
+
+//<span class="ui-icon ui-icon-close">Remove Tab</span>
+
         $("#tabs").tabs("refresh");
     
         $("#tabs").append(
             "<div id='tabs-" + num_tabs + "'>" + makeTable() + "</div>"
         );
-
-
     });
 
 
-    
+    // $("#remove_selected").click(function(){
+    //     var selectedTab = $("#TabList").tabs().data("selected.tabs");
+    //     $("#tabs").find( ".ui-tabs-nav li:eq(selectedTab)" ).remove();
+
+    // });
+
+        //(e) {
+    //     e.preventDefault();
+    //     var selIndex = $("#tabs").tabs("option", "selected");
+    //     $("#tabs").tabs("remove", selIndex);
+    // });
+
+    // $("#remove-first").click(function(){
+    //     $("#tabs").find( ".ui-tabs-nav li:eq(0)" ).remove();
+
+    // });
+
+    $("#remove-all").click(function(){
+
+        $("#tabs > ul").empty();
+        $("#tabs > div").empty();
+
+    });
+
     $("#m_form").validate({
         rules: {
             min_h: {
