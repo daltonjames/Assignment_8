@@ -26,6 +26,7 @@ $(document).ready(function () {
 
     $("#m_form").submit(function() {
 
+        
         $("#tabs > ul").append(
             "<li><a href='#tabs-" + num_tabs + "'>#" + num_tabs + "</li>"
         );
@@ -64,7 +65,7 @@ $(document).ready(function () {
     //removes all tabs and the contents in all of the tabs
     $("#remove-all").click(function(){
 
-        num_tabs = 1;
+        num_tabs = 0;
 
         $("#tabs > ul").empty();
         $("#tabs > div").remove();
@@ -236,6 +237,7 @@ function makeTable(){
 
     //change current tab number
     num_tabs++;
+
 
     //append the table fully contained in a string to the DOM 
     return appendStr; 
