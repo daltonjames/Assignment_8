@@ -21,13 +21,14 @@
 
         <link href="css/mult_table_style.css" rel="stylesheet" type="text/css">
 
+        <!--jquery tabs plugin-->
         <link href="js/jquery-ui-1.11.2/jquery-ui-1.11.2/jquery-ui.css" rel="stylesheet" type="text/css">
         <link href="js/jquery-ui-1.11.2/jquery-ui-1.11.2/jquery-ui.theme.css" rel="stylesheet" type="text/css">
         <link href="js/jquery-ui-1.11.2/jquery-ui-1.11.2/jquery-ui.structure.css" rel="stylesheet" type="text/css">
 
         <script src="js/jquery-ui-1.11.2/jquery-ui-1.11.2/jquery-ui.js"></script>
 
-        
+        <!--jquery validation plugin-->
         <script src="js/jquery-validation-1.13.1/dist/jquery.validate.js"></script>
         <script src="js/jquery-validation-1.13.1/dist/additional-methods.js"></script>
 
@@ -40,6 +41,7 @@
 
         <h1>Multiplication Table</h1>
 
+        <!--wraps the entry form for user input-->
         <div id="form_wrapper">
 
             <!--form to take in the size of the multiplication table -->
@@ -80,6 +82,11 @@
 
         </div><!--end for form_wrapper div-->
 
+        <!--tag for the error message-->    
+        <span id="error_msg"></span>
+
+        
+        <!--buttons to remove tabs-->
         <!--
         <button id="remove_selected">Remove Selected Index</button>
         <button id="remove-first">Remove First Tab</button>
@@ -87,17 +94,11 @@
         -->
         <button id="remove-all">Remove All Tabs</button>
         
-        
+        <!--where the tabs will go-->
         <div id='tabs'>
             <ul>
             </ul>
         </div>
-
-
-    
-        <!--tag for the error message-->    
-        <span id="error_msg"></span>
-
     
     </body>
 </html>

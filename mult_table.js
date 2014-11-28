@@ -25,18 +25,22 @@ $(document).ready(function () {
     $("#tabs").tabs();
 
     $("#m_form").submit(function() {
-                             
+
         $("#tabs > ul").append(
-            "<li><a href='#tabs-" + num_tabs + "'>#" + num_tabs + "</a><span class='ui-icon ui-icon-close'>Remove Tab</span></li>"
+            "<li><a href='#tabs-" + num_tabs + "'>#" + num_tabs + "</li>"
         );
 
-//<span class="ui-icon ui-icon-close">Remove Tab</span>
+        //adds an 'x' to the tabs......could not figure out how the 'x' worked
+        //<span class="ui-icon ui-icon-close">Remove Tab</span>
 
         $("#tabs").tabs("refresh");
     
         $("#tabs").append(
             "<div id='tabs-" + num_tabs + "'>" + makeTable() + "</div>"
         );
+
+        $( "#tabs" ).tabs( "option", "active", num_tabs-1 );
+
     });
 
 
@@ -57,13 +61,18 @@ $(document).ready(function () {
 
     // });
 
+    //removes all tabs and the contents in all of the tabs
     $("#remove-all").click(function(){
 
+        num_tabs = 1;
+
         $("#tabs > ul").empty();
-        $("#tabs > div").empty();
+        $("#tabs > div").remove();
 
     });
 
+
+    //the json format for the jquery ui validation plugin
     $("#m_form").validate({
         rules: {
             min_h: {
@@ -147,7 +156,14 @@ $(document).ready(function () {
     });
 });
 
+
+//does basic error checking and makes the table for the tab
 function makeTable(){
+
+    //do not create table if there is an error
+    if(bool_error === true){
+        return;
+    }
 
     //clears error message if any exist
     $("#error_msg").empty();
@@ -157,6 +173,7 @@ function makeTable(){
         return;  
     }
 
+    //find # of rows and columns
     var rows = ($("#max_v").val() - $("#min_v").val()) + 2;
     var columns = ($("#max_h").val() - $("#min_h").val()) + 2;
 
@@ -217,6 +234,7 @@ function makeTable(){
 
     appendStr = appendStr.concat("</table>");
 
+    //change current tab number
     num_tabs++;
 
     //append the table fully contained in a string to the DOM 
@@ -232,17 +250,25 @@ jQuery.fn.numVal = function() {
 };
 
 
-
+//param: takes in the id of the tested text box
+//makes the border of the textbox red and in focus
+//also sets bool_error to true
+//function partially take from Jesse Heines mult table generator
 highlightError = function( strVarToTest ) {
 
     bool_error = true;
 
     $("#error_msg").empty();
 
+
     $( strVarToTest ).css( { "border" : "2px solid red" } )  ;
     $( strVarToTest ).focus() ;
 } 
 
+
+//param: takes in the id of the tested text box
+//unhighlights error and removes the error message
+//sets bool_error to false
 unhighlightError = function( strVarToTest ) {
 
     bool_error = false;
