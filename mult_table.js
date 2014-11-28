@@ -31,6 +31,8 @@ $(document).ready(function () {
             "<li><a href='#tabs-" + num_tabs + "'>#" + num_tabs + "</li>"
         );
 
+        console.log("here");
+
         //adds an 'x' to the tabs......could not figure out how the 'x' worked
         //<span class="ui-icon ui-icon-close">Remove Tab</span>
 
@@ -63,6 +65,7 @@ $(document).ready(function () {
     // });
 
     //removes all tabs and the contents in all of the tabs
+    //then refreshes the tabs
     $("#remove-all").click(function(){
 
         num_tabs = 0;
@@ -70,6 +73,7 @@ $(document).ready(function () {
         $("#tabs > ul").empty();
         $("#tabs > div").remove();
 
+        $("#tabs").tabs( "refresh" );
     });
 
 
